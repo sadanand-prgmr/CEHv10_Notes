@@ -326,15 +326,15 @@ abbrivations given in output
 cmd -> net view \\ip_of_machine_with_netbios  // if the machine has any sharing it will show here, Screenshot(13)
  - u can also use tool "netbios enumerator" Screenshot(16), "winfingerprint" Screenshot(17)
 
-SNMP(Simple Network Manage Protocol) Enumeration -> Screenshot(12)
+SNMP(Simple Network Manage Protocol) Enumeration -> Screenshot(12) -@@
 - This SNMP protocol is needed on devices to be able to allow the adminstrator to manage them, U can find this protocol on
  CISCO router, on windows, on printers
-- SNMP protocol have different version, ver1 and ver 2 were very vulnerable and the latest version(ver 3) was a patch
+- SNMP protocol have different version, ver1 and ver 2 were very vulnerable and the latest version(ver 3) was a patch  -@@
 - If victim is using SNMP on his machine or on office devices such as router or a printer anything, u will be able to get
-  tons of information and much more info then NetBIOS.
+  tons of information and much more info then NetBIOS. -@@
 - On the system, router or printer on which SNMP is avilable or we can also install it. 
 - In SNMP ver 1 and 2 the default settings contains the option in Security configuration as "Accept SNMP packets from any
-  host"
+  host" -@@
 - "snscan" this tool is used to scan every device computer router printer which has SNMP available. 
 - after starting scan from 'snscan', it will find the port with 161 on devices as SNMP uses the port 161 // in tool we can
   also select other ports to scan as in options mentioned.
@@ -352,29 +352,29 @@ DNS Enumeration ->
 - "megacorpone.com" this is demo website for testing.
 - DNS is a service that resolve name to IP 
 - cmd On kali terminal -> host -t -ns website_name.com	// ns to get all the DNS services that support specific website, in
-  the output u will get the DNS servers used to resolve IP realted to target website
-- cmd On kali terminal -> host -t -mx website_name.com	// mx will list all the main services used by the target website
-- cmd On kali terminal -> host www.website_name.com	    //  if it exists we will get the IP of the service
-- cmd On kali terminal -> host portal.website_name.com	// to check or get the IP for portal host on website
-- cmd On kali terminal -> host sharepoint.website_name.com	//  to check or get the IP for sharepoint host on website
+  the output u will get the DNS servers used to resolve IP realted to target website -@@
+- cmd On kali terminal -> host -t -mx website_name.com	// mx will list all the main services used by the target website -@@
+- cmd On kali terminal -> host www.website_name.com	    //  if it exists we will get the IP of the service -@@
+- cmd On kali terminal -> host portal.website_name.com	// to check or get the IP for portal host on website -@@
+- cmd On kali terminal -> host sharepoint.website_name.com	//  to check or get the IP for sharepoint host on website -@@
 - this all info will be used for future attack
 
 DNS Zone Transfer ->
 - Screenshot(18), DNS includes all the services name and their IP and they usually store those IP in something called Zone,
  So in DNS each Zone contains Name and IP which is a critical info but it will not lead to the full network compromization
- but it will help u to plan a successful attack.
+ but it will help u to plan a successful attack. -@@
 - If DNS server crash no one will be able to access any website bcz their will not be anything to resolve from name to IP.
 - So usally any network will have more then one DNS server.
 - Between DNS server their will be a transfer of those zone, So if we have primary DNS and Secondary DNS and the primary DNS
   holds all the name and IP in one zone it will frequently copy this zone to another DNS, So if primary fails the secondary
-  will take over and this process is called zone transfer.
+  will take over and this process is called zone transfer. -@@
 - Many network administrators do not configure their DNS server properly in a way that any computer can communicate with a
   primary DNS and tell that I am ur secondary DNS could u plz send me a copy from the zone file for all the nameservice and
   IP and bcz it was not welcome, So the primary DNS can copy all the info to the Hacker machine assuming that hacker machine
-  is a secondary DNS
+  is a secondary DNS -@@
 - Now we will try to do a zone transfer -> 
 - cmd On kali terminal -> host -t -ns website_name.com
-- cmd On kali terminal -> host -l website_name.com DNS_name_server // this will try to ask to copy, try it untill any name
+- cmd On kali terminal -> host -l website_name.com DNS_name_server // this will try to ask to copy, try it untill any name -@@
 								// server allows u for transfer and u will get the all data from DNS.
 													  
 ENUM4Linux ->
@@ -382,80 +382,80 @@ ENUM4Linux ->
 - cmd On kali terminal -> enum4linux -v ip_of_server_or_computer // this will try to info from that machine such as domain
   name, share info, OS, Users, group etc
 
-System Hacking -> Screenshot(19), Screenshot(20), Screenshot(21), Screenshot(22)
+System Hacking -> Screenshot(19), Screenshot(20) -@@, Screenshot(21) -@@, Screenshot(22)
 
-Password Cracking -> Screenshot(23)
+Password Cracking -> Screenshot(23) -@@
 
-Types of Password Attacks -> Screenshot(24)
-- In windows the location where the password of our system is stored is C Drive -> Windows -> System32 -> config -> SAM file
-- In linux the location where the password of our system is stored is /etc/shadow
+Types of Password Attacks -> Screenshot(24) -@@
+- In windows the location where the password of our system is stored is C Drive -> Windows -> System32 -> config -> SAM file -@@
+- In linux the location where the password of our system is stored is /etc/shadow -@@
 
-Active Online Attack -> Screenshot(25), Screenshot(26)
-- We can also use the google help such as going to the article which mentions some of the most common passwords
+Active Online Attack -> Screenshot(25) -@@, Screenshot(26) -@@
+- We can also use the google help such as going to the article which mentions some of the most common passwords -@@
 
 Default Password -> Suppose we r able to get someone's public IP, their r services such as tracing email by the help of which
 we can get the IP through mail, after getting the IP the attacker can paste it in the browser and on executing it he will be
-able to go to the router, now see what kind of router it is such as D-link etc
+able to go to the router, now see what kind of router it is such as D-link etc -@@
 - Now go to website such as "routerpasswords.com" and this website will show u all the default passwords in all router, most
  of the router will have more then one default account, so if u reset the password for the main account that doesnot mean the
- default router has been disabled and once u get the access to the router u won the game. Screenshot(27)
+ default router has been disabled and once u get the access to the router u won the game -@@. Screenshot(27) -@@
 
 Tools for Cracking ->
 - Such we will use Brute Force attack, Dictionary attack, rainbow table attack 
 - If a website is blocking ur ip or blocked by countries for particular tool download try using public proxies
 - tool "Cain & Abel" from oxid.it website // It is one of the best sniffering tools and password cracking, intercepting
  traffic, MITM attack
-- Any antivirus will consider any hacking program as a malicious program so it will block it.
-- Cain tool will also require 'wireshark' to work as wireshark uses WinPcap which is important for Cain to run.
+- Any antivirus will consider any hacking program as a malicious program so it will block it. -@@
+- Cain tool will also require 'wireshark' to work as wireshark uses 'WinPcap' which is important for Cain to run. -@@
 - Cain can be used for Active, Passive and Offline attacks, In passive attack the attacker will not connect to the victim by
   any way
-- Cain was developerd for windows xp so if we use it on the higher version OS then we need to do following settings
+- Cain was developerd for windows xp so if we use it on the higher version OS then we need to do following settings -@@
 control panel > network and sharing center > change adapter settings > Ethernet (right click then "Properties") > 
 Internet ProtocolVersion 4(TCP/IPv4) (Properties) > Advanced... > Under the heading "DNS suffix for the connection" tick both
 the checkboxes which r Register the connection.... and Use the connection.... > now do the same for Internet Protocol
 Version 6(TCP/IPv6) // Without these Setting changes the Cain will run but not work.
-- Telnet is a program that allow user to connect remotely but now no one use Telnet bcz it sent and recieve in Plain text
-  every one is now using remote connection via ssh.
+- Telnet is a program that allow user to connect remotely but now no one use Telnet bcz it send and recieve in Plain text
+  every one is now using remote connection via ssh. -@@
 - Bydefault telnet is not installed so u need to install it, for that go to manage on windows server vm > add role or feature
- > do next next untill u get to the feature screen and select Telnet and also start the Telnet from the settings
-- Start the sniffer on the Cain // this will give u all the IPs and MAC address, OS type while sniffing the network 
-- now go to APR option on the Cain // here we can do the interception or MITM attack
+ > do next next untill u get to the feature screen and select Telnet and also start the Telnet from the settings -@@
+- Start the sniffer on the Cain // this will give u all the IPs and MAC address, OS type while sniffing the network -@@ 
+- now go to APR option on the Cain // here we can do the interception or MITM attack -@@
 - select the computers among which u wants to see the interception, select them and allow the APR to do the work 
 - now from kali terminal 
-cmd -> telnet ip_of_machine_with_telnet
+cmd -> telnet ip_of_machine_with_telnet -@@
 cmd -> enter the username as administrator and enter the password as complexpassword and now the connection will be
        established
 - Now what is happening is that one machine is an attacker and the other 2 machines have established the connection, the 
-attacker mackine is sniffing the passowrd, In side the attacker machine Cain go to the Telnet service option and u will see
-that u can see the username and password and all the cmds and things exchanged between the connected machine
-- and this is Passive Password attack
+attacker mackine is sniffing the passowrd, Inside the attacker machine Cain go to the Telnet service option and u will see
+that u can see the username and password and all the cmds and things exchanged between the connected machine -@@
+- and this is Passive Password attack -@@
 
 Xhydra ->
 - cmd in kali -> nano test.txt // we r creating a wordlist
 - cmd in kali -> xhydra  // this is the graphical interface of hydra
 - enter the IP of target, enter the Port such as of Telnet, or any open port which u found
 - then enter username
-- try to get the proper usesname, if u don't get it try using common one such as administrator, guest, root, backup, user etc
-, we can also create a userlist sameway u can do for the password.
+- try to get the proper username, if u don't get it try using common one such as administrator, guest, root, backup, user etc
+, we can also create a userlist sameway u can do for the password. -@@
 - and then start the process // if the wordlist contains the right username and password then it will give the output which
  we can use to do the proper connection with telnet.
 
 SSH cracking ->
 - Althought ssh is used more but still in some home systems u will find that whole servcies r running on the router and this
- will include telnet 
+ will include telnet  -@@
 - use the exact same settings from the above telent steps except change the port to 22 and the xhydra will crack the ssh
 - now use the username and password u got after crack and try to establish the connection using ssh
 
 Ncrack ->
 - nmap -sS ip_of_server // this will show different services
 - ms-wt-server is the service for microsoft remote desktop services, many server will allow this remote desktop protocol to
- be able to access server remotely, which means the server allow for remote desktop connection
+ be able to access server remotely, which means the server allow for remote desktop connection -@@
 - kali cmd terminal -> rdesktop -u Administrator ip_of_server	// -u is here for username, after executing this cmd u will
- see that it is asking for password, so now we need to crack the password 
+ see that it is asking for password, so now we need to crack the password
 - Ncrack is a tool that allow u to crack online passwords for different services
 - try to get valid username it will be better
 - cmd  kali -> ncrack -v -f --user administrator -P test.txt rdp://ip_of_server,CL=1 // here -v verbose,
-, CL means try per time, -P is for wordlist passwords
+, CL means try per time, -P is for wordlist passwords -@@
 - after cracking ncrack will tell the password if it is in wordlist
 - now try to login into the server
 - So ncrack is good tool but for it's proper working u need proper wordlist, it will work for http also just change from rdp
@@ -467,8 +467,8 @@ cmd  kali -> ncrack -v -f --user User -P test.txt rdp://ip_of_server,CL=1
 
 The right Word List ->
 - To crack a password u need two things which is a valid username which u can get by enumeration or different tools and 2nd
- is a proper wordlist, inside kali linux u will find some word list in path /usr/shared/wordlists.
-- For a Proper worlist we have 3 ways
+ is a proper wordlist, inside kali linux u will find some word list in path /usr/shared/wordlists. -@@
+- For a Proper worlist we have 3 ways -@@
 1 - download some wordlist from the internet such as download 'darkC0de.txt' it has 40 million passwords so now the proper
   with it is it will take long time.
 2 - create ur own wordlist, such as many people uses their mobile no. for their wifi passwords so we can take such sensable 
@@ -484,7 +484,7 @@ The right Word List ->
  cmd kali -> cupp -i  // then answer the questions asked by the tool regarding the victims footprint data, after answering
  all questions it will generate the wordlist accordingly
 
-Password Reset Hack -> Screenshot(28)
+Password Reset Hack -> Screenshot(28) -@@
 - If u have an access to a physical machine and it's OS has a password, now to hack in this type of scenerio it comes in
   online attack, here online doesn't mean the internet but it's an active machine and attacker has access to machine
   physically.
