@@ -28,7 +28,7 @@
   
 - Vectors -> The major regions of being attacked by somebody, Types ->
   - APT(Advanced Persistent Threads) ->  Anybody can write a malacious code or script which he can deploy to the victim
-  machine or network which will be always being working in the background and victim doesn't know about it.
+    machine or network which will be always being working in the background and victim doesn't know about it.
   - Botnet
   - Cloud Computing -> Service providers of cloud could have vulnerabilities themselves.
   - Insider Attack -> Betral by an employee itself
@@ -135,13 +135,13 @@
   information.
 
 - Email harvest -> it is a tool which is present in the metasploit framework 
-	- kali terminal cmd -> msfconsole
-	  > use gather/search_email_collector 
-	  > show options // this is to show us all the options
-	  > set DOMAIN eccouncil.org	// to check for emails with the input domains
-	  > set OUTFILE file_name	// to get the result in some file
-	  > show options // this time to check if the changes r done
-      > exploit // to gather all the emails related to target
+- kali terminal cmd -> msfconsole
+  > use gather/search_email_collector 
+  > show options // this is to show us all the options
+  > set DOMAIN eccouncil.org	// to check for emails with the input domains
+  > set OUTFILE file_name	// to get the result in some file
+  > show options // this time to check if the changes r done
+  > exploit // to gather all the emails related to target domain
 	
 - "Google Hacking" means that how efficiently we can use google to do our hacking tasks such as for reconnaissance.
 - On google search use following syntaxs for better search ->
@@ -171,20 +171,20 @@
   access webcams  
 
 - Footprinting Recon Tools ->
-	- Firebug -> it's a extention for google chrome
-	- Web Data Extractor -> it is a tool used to retrive emails, mobile no etc from website
-	- HTTrack -> This helps u to download or we can say clone the complete website on ur local machine, this tool is already
-   	  being avilable on Kali Linux OS
-	- webhttrack -> for getting graphical console of httrack
-	
+- Firebug -> it's a extention for google chrome
+- Web Data Extractor -> it is a tool used to retrive emails, mobile no etc from website
+- HTTrack -> This helps u to download or we can say clone the complete website on ur local machine, this tool is already
+  being avilable on Kali Linux OS
+- webhttrack -> for getting graphical console of httrack
+
 - Metagoofil Metadata Tool ->
-	- This tool can be used to do reconnaissance on victim website, it also uses the google database form the exploit-db.com
-	- It gather and extract metadata of public docs, download the files from victim and at end it will generate a report
-	- This tool works on kali linux machine
-	- cmd -> apt-get install metagoofil
-	- cmd -> metagoofil
-	- cmd -> take the help of the example mentioned now in the terminal
-	
+- This tool can be used to do reconnaissance on victim website, it also uses the google database from the exploit-db.com
+- It gather and extract metadata of public docs, download the files from victim and at end it will generate a report
+- This tool works on kali linux machine
+- cmd -> apt-get install metagoofil
+- cmd -> metagoofil
+- cmd -> take the help of the example mentioned now in the terminal
+
 - It's good to collect information of the people in the organization, for this we can use "pipl.com" website and just provide
  the name or email or any other data and it will search for u about people, other websites like this is 'zabasearch.com' but
  it is only related to US, it can also provide info such as background check and property check, use other sites also like
