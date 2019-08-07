@@ -487,72 +487,72 @@ The right Word List ->
 Password Reset Hack -> Screenshot(28) -@@
 - If u have an access to a physical machine and it's OS has a password, now to hack in this type of scenerio it comes in
   online attack, here online doesn't mean the internet but it's an active machine and attacker has access to machine
-  physically.
+  physically. -@@ 
 - For above scenerio we will access an image and this image could be installed in USB or CD, then plug it to victim computer
-  and then restart the machine and once it restart u will be able to restart a password
+  and then restart the machine and once it restart u will be able to reset a password -@@
 - We can use the tools such as 'PCUnlocker', which is paid tool, or u can use 'Hiren's Boot CD' , extract them and the image
-  on the tool is ready to work
+  on the tool is ready to work -@@
 - To try this on virtual machine we need to go to the settings then CD-ROM of the virtual machine.
 - When u start a Virtual machine usally it will start booting from the local harddrive it will not start booting from the
-  CD-ROM.
+  CD-ROM. -@@
 - If it would be a physical machine then u need to just press f2 or esc buttons, So to start the vm from the CD-ROM we need
   to go to the places where those VMs r saved or installed then search for file their "*.vmx" open it using notepad and add
   one line in 2nd line of the file which is -> bios.bootdelay=7000 // then save the file, now start the virtual machine and
   u will see it will give u the time to go to the bios settings of the VM and then to the -> Enter setup -> Boot tab -> 
   CD-ROM Drive if u wants to use a CD -> or Hard Drive if u wants to boot it from the pendive and u will see that the tool
-  is asking u to reset the password.
+  is asking u to reset the password.  -@@
 - So most of the hackers try to have these kinds of images on the flashdrive in hope if they got the chance to get the access
   to the machine physically they can just plug the drive and then just reset the password.
 
 Offline Password Attack ->
 - If the attacker is able to get the files that include all password from computer such as SAM file from windows machine, we
- can use Cain tool to open this SAM file.
+ can use Cain tool to open this SAM file. -@@
 - On Cain > Cracker > click '+' button > place the file path // and u will get the all the usernames and the passwords Hash
  values
 - select the user name of which u wants to break the password then choose the type of attack u wants to perform on it such as
-  Dictionary Attack, Brute Force Attack or Cryptanalysis Attack etc
+  Dictionary Attack, Brute Force Attack or Cryptanalysis Attack etc -@@
 
-Maleware -> 
+Malware -> 
 - "wannacry" is a ransomware to which the Global financial losses around 4 billion dollars and same like it was "bad rabbit",
-Screenshot(35)
+Screenshot(35) -@@
 - Types of Malware -> Screenshot(29), their r two categories spying(such as Trojan, keyloggers, backdoors etc) and damaging
-(Virus, worm etc)
+(Virus, worm etc) -@@
 - Trojan Horse is one of the major syping application, it's concept is that u can send a malicious program to any victim and
  once victim open it u will have the control over the computer using a client software, So generaly a trojan horse consists
- of a virus or patch or server that u needs to send to the victim and once the victim runs u will have access to machine. 
+ of a virus or patch or server that u needs to send to the victim and once the victim runs u will have access to machine. -@@ 
  Ex-> Netbus Screenshot(30) and the other part u need a client software by using which u will have full access of machine but
  the catch is the victim must be running a patch or server running from his side, it's usually hidden in a regular program or
- file such as pdf file etc, Screenshot(36,37)
+ file such as pdf file etc, Screenshot(36,37) -@@
 
-Common Ports used by Trojan -> Screenshot(38,39)
+Common Ports used by Trojan -> Screenshot(38,39) -@@
 
-How to infect systems using trojan -> Screenshot(40,41,43)
+How to infect systems using trojan -> Screenshot(40,41,43) -@@
 
 - Ransom ware is a damaging application, it encrypt all the files on system and it not just target computers only it target
- any smart device. 
+ any smart device.  -@@
 
-- Virus is damaging program, it may delete files, may format drive but not lead to leakage of data
+- Virus is damaging program, it may delete files, may format drive but not lead to leakage of data -@@
 
 - Worm is similar to virus except it get replicated to itself, as the virus will infect only one device while a worm will try
   to infect the other machines also in the network, Virus need something called hosting so virus will not be moving by itself
-  or get hosted to another file or another program and worm does not need any hosting it will be moving by itself.
+  or get hosted to another file or another program and worm does not need any hosting it will be moving by itself. -@@
 
 - Rootkit is a program that hide the real process in a sence that u may configure a rootkit in away that what u want a victim
  to see. So if u delete some file from victims computer or copy some file but u want the user to get the deleted file as fake
- file, this way the victim could got hacked but he doesn't know, Screenshot(31)
+ file, this way the victim could got hacked but he doesn't know -@@, Screenshot(31) -@@
 
 - Keylogger is a syping application, it just sends the victims key stroks to attacker through server or email. their r 2 
-  types of keyploggers -> Software and Hardware, Software keyloggers r considered malware
+  types of keyploggers -> Software and Hardware, Software keyloggers r considered malware -@@
 
 - Adware, once it get installed on ur machine it will be used to show advertisements, it is not doing any damage it's just
-  disturbing.
+  disturbing. -@@
   
 - Wrapper is like a technique to combine a virus or a malware with a regular program or file as it is easier to convience
-  someone to download a file in comparision of downloading a software, Screenshot(44)
-  
-Different Ways Malware is spreaded -> Screenshot(32,33,34)
+  someone to download a file in comparision of downloading a software -@@, Screenshot(44) -@@
+   
+Different Ways Malware is spreaded -> Screenshot(32,33,34) -@@
 
-Create a Virus -> Screenshot(45), We will create it using simple dos cmds
+Create a Virus -> Screenshot(45), We will create it using simple dos cmds 
 @echo off	// This means that when this file get executed do not show the user it is executed
 :Testvirus	// naming the program
 start		// this will open another cmd line
