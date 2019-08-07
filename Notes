@@ -178,7 +178,7 @@
 - webhttrack -> for getting graphical console of httrack
 
 - Metagoofil Metadata Tool ->
-- This tool can be used to do reconnaissance on victim website, it also uses the google database from the exploit-db.com
+- This tool can be used to do reconnaissance on victim website, it also uses the google database from the exploit-db.com -@@
 - It gather and extract metadata of public docs, download the files from victim and at end it will generate a report
 - This tool works on kali linux machine
 - cmd -> apt-get install metagoofil
@@ -233,7 +233,7 @@ Identifying Live Sytems -> Live host means the computer that is connected to the
 - nmap // do it from linux_networking, this is best tool considered for networking scanning.
 - nmap -sn 192.168.50.1-254
 - nmap was able to identify while ping does not bcz ping uses icmp protocol while nmap uses the ARP protocol, as ARP protocol
-  is used to resolve IP to MAC address, Screenshot(5)
+  is used to resolve IP to MAC address, Screenshot(5) -@@
 
 Port Scanning -> By doing this u will be able to identify vulnerable ports and vulnerable services, we can also use nmap for
 this task.
@@ -244,13 +244,14 @@ scanning or half open scan.
 wireshark capture all the traffic going between the victim machine and hacker machine.
 - On wireshark search for the port which are detected on the nmap, it will show that how the 3way handshake is done by nmap, 
 So it shows that the 3 way handshake is done on each port by nmap to check whether the port is open or not, if a syn/ack is
-recieved then that means the port is open 
+recieved then that means the port is open -@@ 
 - Now if the firewall checks out that a 3 way handshake is done and the firewall will block this IP. 
 
 Advance Scanning Techniques ->
 - To learn more about scanning go to -> nmap.org/book/man-port-scanning-techniques.html and u will find different types of
  scans with different flag usage in 3 way handshake
-- X-mas scan cmd -> nmap -sX ip_address // this send FIN, PSH, URG packets only, see Screenshot(7) to understand working
+- X-mas scan cmd -> nmap -sX ip_address // this send FIN, PSH, URG packets only, see Screenshot(7) to understand working 
+- if their is no response on the scan then that means the port is open -@@
 - Fin scan working -> Screenshot(6)
 - So different techniques and scans have different advantages.
 
@@ -277,7 +278,7 @@ machine 2 -> nc machine_1_ip 5555 // after this the connection will be establish
  
 Grabbing Banner -> This means whenever u try to connect or open a port on another machine that has a service it will display
 info about that service and this can be helpful to identify product or software on another machine, we can use netcat for
-this task
+this task -@@
 cmd attacker machine -> nc victim_ip port_no // this will tell u that what software is being used on victim machine for
 particular port
 
@@ -291,14 +292,14 @@ Here we can define the policies for scan, it even give us the options for the ty
  exploit, we can use other websites for that.
  
 Hiding Identity ->
-Proxy Servers -> Screenshot(9), It's hard to find the identity of a hacker, We can use Tor browser for this task, tor
-ctually transfers ur data or request from multiple proxies(proxy chain) which makes it difficult to trace back the real user.
+Proxy Servers -> Screenshot(9) -@@, It's hard to find the identity of a hacker, We can use Tor browser for this task, tor
+actually transfers ur data or request from multiple proxies(proxy chain) which makes it difficult to trace back the real user.
 Tor browser will only hide when u r browsing some website but not if u r using system it won't help u.
 
 To configure a local proxy server->
 - We use a program "proxy workbench"
 - download "proxy workbench" on machine 1, then run it on machine 1 // if we have this program on another machine also then
- we can also make a proxy chain
+ we can also make a proxy chain -@@
 - now connect to machine 2 //look through the tutorial video for configuration
 
 Using Public Proxy ->
@@ -309,7 +310,7 @@ Using Public Proxy ->
 - a list will appear of the available proxy servers, and select one of them
 
 Enumeration ->
-- Screenshot(15), Screenshot(10), Screenshot(14)
+- Screenshot(15), Screenshot(10) -@@, Screenshot(14) -@@ // cmds for enumeration on windows
 
 NetBios Enumeration ->
 - Screenshot(11), it is an old naming system and right now in naming system we r using DNS, A naming system is a service that
