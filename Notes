@@ -937,71 +937,68 @@ additional information to an application, and once the application recieve infor
 application has a specific location into the memory were he can save all the user input, now if u input more information then
 the allocated memory to the application now if the developer has keep this think in consideration the application would not
 accept the extra input but otherwise the input would be accepted and that extra information would be saved in different 
-locations of the memory not just in the memory which is allocated to the application.
+locations of the memory not just in the memory which is allocated to the application. -@@
 
-U can connect two machines using 'sikabomb' with default port 4321
+U can connect two machines using 'sikabomb' with default port 4321 -@@
 cmd on machine 1 -> telnet machine_2_ip 4321
 cmd on machine 2 -> start_sikabomb_application
 now the question is the input given by the machine 1 is stored where in machine 2 which is memory not harddrive, the 
-developer of sikabomb must have identified a location where he will all this input which has limitation in size.
+developer of sikabomb must have identified a location where he will all this input which has limitation in size. -@@
 
 cmd on machine 1 -> ./python_program_to_send_huge_amount_of_data_to_machine_2.py	// eventually the sikabomb on machine 2
-will crash which shows that this program has buffer overflow 
+will crash which shows that this program has buffer overflow  -@@
 
 - Some locations in memory r very critical if u r able to reach them from remote computer u can control whatever being
-executing on this computer
+executing on this computer -@@
 
-Ways to identify if program has buffer overflow ->
+Ways to identify if program has buffer overflow -> -@@
 - 1st way - After footprinting u will know some applications or OS also which r available on victim machine
 - 2nd way (Reverse Engineering) -> In this u need to analyse the code of the OS or some open source applications
 - 3rd way (Test application urself for buffer overflow) -> This is like above ex of sikabomb
 
 - Connect using the netcat or telnet the victim machine with the attacker machine, their must be a max size limit checker
 for the input to be send from one machine to another, and the input would be sent untill the application would crash this
-method is called fuzzing.
+method is called fuzzing. -@@
 - We can specific fuzzing applications for this task such as 'spike' 
 - cmd -> ./generic_send_tcp victim_ip 4321 buffer_script.spk 0 0 // this is to send and execute the file on the machine 
 which has sikabomb running on it, the buffer scripts inside the fuzzer have different applications such as one of them
 'ability.spk' specifies the character which needed to be send continously untill the application crashes, stoping of sending
-the characters from attacker fuzzer script means 2 things either it has been crashed or it has stopped taking any input.
+the characters from attacker fuzzer script means 2 things either it has been crashed or it has stopped taking any input. -@@
 
 - Inside the memory their r some specific locations, those locations r place where they r controlling what application
 should be running, now during fuzzing if those characters have reached those critical locations that means we can customerize
-characters by sending some code in place of them and enforce the memory to execute that code.
+characters by sending some code in place of them and enforce the memory to execute that code. -@@
 
 - 'Immunity Debugger' program is used to map memory, this tool has to be associated with specific program or we can say the
 application on which the buffer overflow is to be tested, It trace the input and output of the memory for one specific
-application
+application -@@
 
 - Attach the program to the 'Immunity Debugger' and then on the right side box u will see 'EIP' which is very important 
-place inside memory, EIP is the place in memory that control the flow or decide what program to be executed
+place inside memory, EIP is the place in memory that control the flow or decide what program to be executed -@@
+- EIP can only accept 4 characters -@@
 
-- EIP can only accept 4 characters
-
-- Another important place is 'ESP', it's like a container that holds the program that will be executed
+- Another important place is 'ESP', it's like a container that holds the program that will be executed -@@
 
 - Try the attack using Fuzzer with Immunity Debugger open, and if u find out that EIP and ESP has been overwritten with the
 character send by the Fuzzer program to this program that means the attacker is able to reach the critical place inside the
-memory, the characters which r overwriting these locations will be in format of Hexadecimal
+memory, the characters which r overwriting these locations will be in format of Hexadecimal -@@
 - After identifying the possiblity of Buffer overflow we need to identify few other things before proceeding 
 
-How many characters were allowed to override the location in memory before crashing the application?
+How many characters were allowed to override the location in memory before crashing the application? -@@
 - we can use wireshark for this task as u can copy the TCP stream which is the data of fuzzing and then paste it in a file
 and then count them using 'wc' and their is one empty space in it so 'no. of total characters - 1' is the answer
-
+Steps -> -@@
 - now we need to figure out that which characters out of total characters have actually overwritten the EIP and ESP location
  we can use a tool for this task called 'pattern_create' and 'pattern_offset' which u can find in the location ->
  /pentest/exploits/framework3/tools
  cmd -> ./pattern_create.rb 5000 // this will create 5000 characters
 - U can use some python scripts for fuzzing instead of using applications but the difference is that a fuzzer application
 sends the characters untill the application is crashed but in script we need to decide the limit if the characters
-
 - Copy those 500 characters created via pattern_create.rb and paste it in python script which u need to use for fuzzing.
 - Now do the buffer attack in same way done before using the immunity debugger
 - Note down the characters in place of EIP and ESP metioned in Immunity Debugger
 - Use pattern_offset.rb for identifying the characters which u overwriting the EIP and ESP
 cmd -> ./pattern_offset.rb characters_no // the output will be the no. after which the characters started overwirtting EIP
-
 - Now edit the script for fuzzer as like this 
 buffer = '\x41' + no._after_overwritting_start + '\x42' + '\x43' * total_characters_send - no._after_overwritting_start
 - Use Framework2-Msfweb for creating the payload // open the website in browser which is given when u eecute this tool
@@ -1011,12 +1008,10 @@ to the 'no. of total characters' used for fuzzing.
 shell = (payload)
 buffer = '\x41' + no._after_overwritting_start + '\x42\x42\x42\x42' + shell + '\x43' * (total_characters_send -
  no._after_overwritting_start + payload_size)
- 
 - The payload will not be executed automatically in EIP, so we need to put something in EIP which will enforce to run what
 ever is in ESP, we need to find for this 'Jump ESP' in machine, Go to Immunity debugger and then to tab 'e', this will show
 all the processes run inside the memory and look for 'USER32' and 'kernel' in the list appeared in Immunity debugger,
 , right click on 'USER32' and then 'search for' -> 'command', u will the code in the format of Hexadecimals  
-
 - In the script for fuzzing do the following changes ->
 shell = (payload)
 buffer = '\x41' + no._after_overwritting_start + '\x53\x93\x42\x7E' + '\x90' * 16 + shell + '\x43' * (total_characters_send
@@ -1026,50 +1021,50 @@ executed, this is best practice, '\x53\x93\x42\x7E' this is Jump ESP code
 
 Practice Buffer Overflow Attack -> download from 'www.thegreycorner.com' application 'vulnserver'
 
-Cloud Computing -> Screenshot(81),Screenshot(82)
-- Offie365 is example of SaaS
-- SaaS, Screenshot(83)
+Cloud Computing -> Screenshot(81),Screenshot(82) -@@
+- Offie365 is example of SaaS -@@
+- SaaS, Screenshot(83) -@@
 
-PaaS- ex -> Google app engine, microsoft azure, Screenshot(84)
+PaaS- ex -> Google app engine, microsoft azure, Screenshot(84) -@@
 
-IaaS- U can lease a physical machine from the cloud provider or a virtual machine, ex- AWS, Rackspace
+IaaS- U can lease a physical machine from the cloud provider or a virtual machine, ex- AWS, Rackspace -@@
 
-Cloud Deployement -> Screenshot(88), Types of Deployement -> Public, Private, Hybrid, Community
+Cloud Deployement -> Screenshot(88), Types of Deployement -> Public, Private, Hybrid, Community -@@
 
-- Their has been many breaches in Public cloud in recent time.
+- Their has been many breaches in Public cloud in recent time. -@@
 
-Private Cloud -> Screenshot(85), Screenshot(86), Screenshot(87)
+Private Cloud -> Screenshot(85), Screenshot(86), Screenshot(87) -@@
 
-Public Cloud -> Screenshot(89), Screenshot(90)
+Public Cloud -> Screenshot(89), Screenshot(90) -@@
 
-Advantages of Public Cloud -> Screenshot(91),
-Disadvantages of Public cloud -> Screenshot(92), Screenshot(93)
+Advantages of Public Cloud -> Screenshot(91) -@@
+Disadvantages of Public cloud -> Screenshot(92), Screenshot(93) -@@
 
-Hybrid Cloud -> Screenshot(94), Screenshot(95)
+Hybrid Cloud -> Screenshot(94), Screenshot(95) -@@
 
-NIST SP 800-145 -> For standard and best practices for cloud computing, search for this topic on google. # Imp for Exam
+NIST SP 800-145 -> For standard and best practices for cloud computing, search for this topic on google. # Imp for Exam -@@
 
-Honeypots -> U can install 'HoneyBot' in the machine from website 'atomicsoftwaresolutions.com'
+Honeypots -> U can install 'HoneyBot' in the machine from website 'atomicsoftwaresolutions.com' -@@
 
 If u do nmap scan on victim machine without honeypot u will see that only few ports r open and once the honeypot is 
 installed u will see too many ports r open and once the attacker try to connect to any service which is virtual or fake 
-service , the victim will get the information about the hacker on it's system.
+service , the victim will get the information about the hacker on it's system. -@@
 
-Evading Honeypots -> ?
+Evading Honeypots -> ? 
 
 Firewalls -> Screenshot(96)
 Go to Windows machine -> control panel -> windows defender firewall -> Advanced settings -> Outbound rules(u will see the
-list of rules for outbound traffic from machine) -> Click on 'New Rule' option, Now just define ur rule
+list of rules for outbound traffic from machine) -> Click on 'New Rule' option, Now just define ur rule -@@
 
 ACL -> Screenshot(97), this is to block and allow the machines to be connected it's somewhat same as firewall, it's generaly
-used between two networks
+used between two networks -@@
 
-For practicing the ACL working we can use the 'Cisco Packet Tracer'.
+For practicing the ACL working we can use the 'Cisco Packet Tracer'. -@@
 
-Standard ACL -> Screenshot(98)
+Standard ACL -> Screenshot(98) -@@
 
 IDS -> Screenshot(99)
-Types ->
+Types -> -@@
 - Behaviour Based, it's more effective, but it's not easy to configure
 - Signature based
 - Use program 'snort' for practicing and seeing the working of IDS
@@ -1079,14 +1074,14 @@ Screenshot(101)
 
 Port Forwarding -> Screenshot(102)
 Public IP is router IP not the IP assigned to u by the router, for the reverse connection from victim the victim machine 
-needs attacker public IP and Port
+needs attacker public IP and Port -@@
 
 - Go to ur router page from browser, login then select advance settings, then go to Port Forwarding option and then 
-configure the settings
+configure the settings -@@
 - Now to do the Remote hacking
 - cmd attacker machine -> nmap -sS public_ip_of_attacker	// all the ports configured for port forwarding would be open
-with status as 'filtered'
-- use tool 'SET'
+with status as 'filtered' -@@
+- use tool 'SET' -@@
  > 1
  > 2
  > 1
@@ -1100,20 +1095,19 @@ with status as 'filtered'
  > 1
  > port_no // this port should be forwarded to the attacker machine
  > 6
- 
 // now if the created payload, now if on any network or machine attacker put the public IP it would be get connected to
 the attacker machine
 // from victim machine browser address bar -> https://public_ip_of_attacker , we use https bcz we r doing port frowarding
 on port 443
 - we can use the all attacks earlier just put the public ip in place of private ip, but it's not the right way properly
-as ur public_ip is exposed
+as ur public_ip is exposed 
 
 Vulnerability Analysis ->
 Vulnerability assessment should be done by the organization at least twice a year, in ur resume put both the pentester
-and vulnerabilites assessment 
+and vulnerabilites assessment -@@ 
 
 - Nessus is one of the tools which is used for Vulnerability Assessment, use Nessus Home for free but it will have the
-limit for few IP's
+limit for few IP's -@@
 - In nessus site -> create new scan -> select the type of scan 
 - after downloading the report from nessus on 'csv' format save the same file in excel format
 
@@ -1122,27 +1116,27 @@ OWASP ZAP -> it is same as burp suite
 - Nexpose from rapid7 is used for Vulnerability assessment, nexpose can be used in different network
 
 IoT -> Screenshot(103)
-- U can do brute force on IOT and other attacks as the same concept of attacks is applied
+- U can do brute force on IOT and other attacks as the same concept of attacks is applied -@@
 
-Components of IoT implementation -> Screenshot(104)
+Components of IoT implementation -> Screenshot(104) -@@
 
-IoT implementation layer wise -> Screenshot(105), each layer has it's own vulnerabilites and weaknesses.
+IoT implementation layer wise -> Screenshot(105), each layer has it's own vulnerabilites and weaknesses. -@@
 
 IoT hardware(open source hardware) -> before this we had closed source hardware in which it is very hard to modify it by
-the user itself.
-Microcontroller - Screenshot(106)
-new microcontroller to overcome previous device drawbacks(Arduino) - Screenshot(107)
-Arduino Ethernet it is same as Arduino except it has a new layer which allowed the internet connectivity - Screenshot(108)
+the user itself. -@@
+Microcontroller - Screenshot(106) -@@
+new microcontroller to overcome previous device drawbacks(Arduino) - Screenshot(107) -@@
+Arduino Ethernet it is same as Arduino except it has a new layer which allowed the internet connectivity - Screenshot(108) -@@
 
-Raspberry PI - Screenshot(109)
-Generally used microcontrollers - Screenshot(110)  
+Raspberry PI - Screenshot(109) -@@
+Generally used microcontrollers - Screenshot(110) -@@  
 
-IoT software -> Categories - Screenshot(111)
-Prototyping -> Screenshot(112)
+IoT software -> Categories - Screenshot(111) -@@
+Prototyping -> Screenshot(112) -@@
 Professional Programming - Eclipse
-Data Storage Analysis - Microsoft Azure(Data Analytic Service)
+Data Storage Analysis - Microsoft Azure(Data Analytic Service) -@@
 
-SDV(Self Driving Vehicles) -> Screenshot(113), Screenshot(119)
+SDV(Self Driving Vehicles) -@@ -> Screenshot(113), Screenshot(119)
 Weakness -> Screenshot(114)
 Interfaces -> Screenshot(115)
 Vehicle to vehicle communication -> Screenshot(116)
@@ -1156,10 +1150,10 @@ attacker terminal -> gattool -i hci0 -b BLE_ID --primary
 attacker terminal -> gattool -i hci0 -b BLE_ID --characterstics
 Screenshot(120)
 
-Physical Security -> Screenshot(121), Screenshot(122), Screenshot(123)
+Physical Security -> Screenshot(121), Screenshot(122), Screenshot(123) -@@
 CISSP summary PDF - go through it very important.
 
-Operations Security Control Methods -> Screenshot(124)
+Operations Security Control Methods -> Screenshot(124) -@@
 CISSP summary PDF - go through it very important.
 
 
