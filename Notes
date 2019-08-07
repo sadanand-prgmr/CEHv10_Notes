@@ -373,8 +373,8 @@ DNS Zone Transfer ->
   is a secondary DNS
 - Now we will try to do a zone transfer -> 
 - cmd On kali terminal -> host -t -ns website_name.com
-- cmd On kali terminal -> host -l website_name.com DNS_name_server	// this will try to ask to copy, try it untill any name
-													  // server allows u for transfer and u will get the all data from DNS.
+- cmd On kali terminal -> host -l website_name.com DNS_name_server // this will try to ask to copy, try it untill any name
+								// server allows u for transfer and u will get the all data from DNS.
 													  
 ENUM4Linux ->
 - cmd On kali terminal -> apt-get install enum4linux
